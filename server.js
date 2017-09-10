@@ -2,6 +2,7 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+const port = process.env.PORT || 3000; // an object that stores the environment variables as key value pairs.
 var app = express();
 
 hbs.registerPartials(__dirname + '/views/partials')
@@ -12,9 +13,9 @@ app.use(express.static(__dirname + '/public'));
 
 // register a middleware through app.use(middleware function)
 // middlewares execute in the order they appear in a file.
-app.use((req, res, next) => {
-  res.render('maintenance');
-});
+// app.use((req, res, next) => {
+//   res.render('maintenance');
+// });
 
 app.use((req, res, next) => { // req here and in the get callback below are exactly the same.
   var now = new Date().toString();
@@ -63,6 +64,6 @@ app.get('/bad', (req, res) => {
   });
 });
 
-app.listen(3000, () => {
-  console.log('Server is up on port 3000');
+app.listen(port, () => {
+  console.log(`Server is up on port ${port}`);
 });
