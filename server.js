@@ -51,9 +51,15 @@ app.get('/', (req, res) => {
 });
 // express converts an object into JSON and sends it as response
 
-app.get('/about', (req, res) => {
+app.get('/about', (req, res) => { // registers a URL
   res.render('about.hbs', { // injects data into the template
     pageTitle: 'About Title',
+  });
+});
+
+app.get('/projects', (req, res) => {
+  res.render('projects.hbs', {
+    pageTitle: 'Projects',
   });
 });
 
